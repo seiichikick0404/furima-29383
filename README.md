@@ -33,17 +33,14 @@ Things you may want to cover:
 | mail          | string | null: false |
 | password      | string | null: false |
 | fam_name      | string | null: false |
-| fir_name      | string | null: false |
-| fam_kana_name | string | null: false |
-| fir_kana_name | string | null: false |
-| birthday      | string | null: false |
+| fir_name      | date   | null: false |
+| fam_kana_name | date   | null: false |
+| fir_kana_name | date   | null: false |
+| birthday      | date   | null: false |
 
 ### Association
 
-- has_many :messages
-- has_many :item
-- has_one :purchase
-- has_one :address
+
 
 
 ## items テーブル
@@ -51,19 +48,19 @@ Things you may want to cover:
 | Column           | Type      | Options                        |
 | ------ ----------| ----------| ------------------------------ |
 | name             | string    | null: false                    |
-| category         | string    | null: false                    |
+| category         | integer   | null: false                    |
 | image            | string    | null: false                    |
 | text             | text      | null: false                    |
-| status           | string    | null: false                    |
-| burden           | string    | null: false                    |
-| shipping_origin  | string    | null: false                    |
-| shipping_day     | string    | null: false                    |
+| status           | integer   | null: false                    |
+| burden           | integer   | null: false                    |
+| shipping_origin  | integer   | null: false                    |
+| shipping_day     | integer   | null: false                    |
 | price            | integer   | null: false                    |
-| user_id          | references| null: false, foreign_key: true |
+| user             | references| null: false, foreign_key: true |
 
 ### Association
 
-- has_many :message
+- has_many :messages
 - belongs_to :user
 - has_one : purchase
 - has_one : address
@@ -73,8 +70,8 @@ Things you may want to cover:
 | Column     | Type       | Options                        |
 | ------     | ---------- | ------------------------------ |
 | comments   | text       | null: false                    |
-| user_id    | references | null: false, foreign_key: true |
-| item_id    | references | null: false, foreign_key: true |
+| user       | references | null: false, foreign_key: true |
+| item       | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -96,6 +93,7 @@ Things you may want to cover:
 
 - belongs_to :user
 - belongs_to :item
+- has_one :address
 
 
 ### address
@@ -108,9 +106,8 @@ Things you may want to cover:
 | house_num   | string     | null: false                    |
 | building    | string     | null: false                    |
 | phone       | integer    | null: false                    |
-| user_id     | references | null: false, foreign_key: true |
-| item_id     | references | null: false, foreign_key: true |
+| user        | references | null: false, foreign_key: true |
+| item        | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :user
-- belongs_to :item
+- belongs_to :purchase
