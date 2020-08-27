@@ -33,13 +33,14 @@ Things you may want to cover:
 | mail          | string | null: false |
 | password      | string | null: false |
 | fam_name      | string | null: false |
-| fir_name      | date   | null: false |
-| fam_kana_name | date   | null: false |
-| fir_kana_name | date   | null: false |
+| fir_name      | string | null: false |
+| fam_kana_name | string | null: false |
+| fir_kana_name | string | null: false |
 | birthday      | date   | null: false |
 
 ### Association
-
+- has_many :messages
+- has_many :items
 
 
 
@@ -63,7 +64,7 @@ Things you may want to cover:
 - has_many :messages
 - belongs_to :user
 - has_one : purchase
-- has_one : address
+
 
 ## messages テーブル
 
@@ -83,11 +84,8 @@ Things you may want to cover:
 
 | Column      | Type       | Options                        |
 | -------     | ---------- | ------------------------------ |
-| credit_id   | integer    | null: false                    |
-| expiration  | integer    | null: false                    |
-| cvv         | integer    | null: false                    |
-| item_id     | references | null: false, foreign_key: true |
-| user_id     | references | null: false, foreign_key: true |
+| item        | references | null: false, foreign_key: true |
+| user        | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -106,8 +104,8 @@ Things you may want to cover:
 | house_num   | string     | null: false                    |
 | building    | string     | null: false                    |
 | phone       | integer    | null: false                    |
-| user        | references | null: false, foreign_key: true |
-| item        | references | null: false, foreign_key: true |
+| purchase    | references | null: false, foreign_key: true |
+
 
 ### Association
 - belongs_to :purchase
