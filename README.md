@@ -98,8 +98,8 @@ Things you may want to cover:
 
 | Column      | Type       | Options                        |
 |------------ |------------|------------------------------- |
-| postal      | integer    | null: false                    |
-| prefectures | string     | null: false                    |
+| postal      | string     | null: false                    |
+| genre_id    | integer    | null: false                    |
 | city        | string     | null: false                    |
 | house_num   | string     | null: false                    |
 | building    | string     | null: false                    |
