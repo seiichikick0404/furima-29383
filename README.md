@@ -35,7 +35,7 @@ Things you may want to cover:
 | fam_name      | string | null: false |
 | fir_name      | string | null: false |
 | fam_kana_name | string | null: false |
-| fir_name_name | string | null: false |
+| fir_kana_name | string | null: false |
 | birthday      | date   | null: false |
 
 ### Association
