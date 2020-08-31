@@ -5,5 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   
+  
+  
+
+
+  
 
 end
