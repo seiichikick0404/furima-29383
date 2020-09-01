@@ -10,6 +10,7 @@ class User < ApplicationRecord
   validates :fam_name, presence: true
   validates :fam_name, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "Full-width characters" }
   validates :fir_name, presence: true
+  validates :fir_name, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "Full-width characters" }
   validates :fam_kana_name, presence: true, format: { with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/, message: "Full-width characters"}
   validates :fir_kana_name, presence: true, format: { with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/, message: "Full-width characters"}
   validates :birthday, presence: true
