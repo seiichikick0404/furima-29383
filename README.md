@@ -30,7 +30,7 @@ Things you may want to cover:
 | Column        | Type   | Options     |
 | --------------| ------ | ----------- |
 | nickname      | string | null: false |
-| mail          | string | null: false |
+| email         | string | null: false |
 | password      | string | null: false |
 | fam_name      | string | null: false |
 | fir_name      | string | null: false |
