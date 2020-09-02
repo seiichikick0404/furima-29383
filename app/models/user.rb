@@ -5,14 +5,16 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :nickname, presence: true
-  validates :password, length: { minimum: 6 }
-  validates :password, format: { with: /\A(?=.*?[a-z])[a-z\d]{8,32}+\z/, message: "Password Include both letters and numbers" }
-  validates :fam_name, presence: true
-  validates :fam_name, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "Full-width characters" }
-  validates :fir_name, presence: true
-  validates :fir_name, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: "Full-width characters" }
-  validates :fam_kana_name, presence: true, format: { with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/, message: "Full-width characters"}
-  validates :fir_kana_name, presence: true, format: { with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/, message: "Full-width characters"}
+  validates :password, length: { minimum: 6 },
+                       format: { with: /\A(?=.*?[a-z])[a-z\d]{8,32}+\z/, message: "Password Include both letters and numbers" }
+  VALID_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/
+  validates :fam_name, presence: true,
+                       format: { with: VALID_NAME_REGEX, message: "Full-width characters" }
+  validates :fir_name, presence: true,
+                       format: { with: VALID_NAME_REGEX, message: "Full-width characters" }
+  VALID_KANA_REGEX = /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/
+  validates :fam_kana_name, presence: true, format: { with: VALID_KANA_REGEX, message: "Full-width characters"}
+  validates :fir_kana_name, presence: true, format: { with: VALID_KANA_REGEX, message: "Full-width characters"}
   validates :birthday, presence: true
   
 
