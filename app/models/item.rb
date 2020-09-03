@@ -13,16 +13,17 @@ class Item < ApplicationRecord
   validates :category, presence: true
   validates :image, presence: true
   validates :text, presence: true
-  validates :status, presence: true
-  validates :burden, presence: true
-  validates :shipping_origin, presence: true
-  validates :shipping_day, presence: true
+  validates :status_id, presence: true
+  validates :burden_id, presence: true
+  validates :shipping_origin_id, presence: true
+  validates :shipping_day_id, presence: true
   validates :price, presence: true,
-            format: { with: /\A[0-9]+\z/, message: "Password Include both letters and numbers" }
+            length: { in: 300..9999999, message: "Price Out of setting range" },
+            format: { with: /\A[0-9]+\z/, message: "Price Half-width number" }
   #一つ目の選択「--」の時は保存できないようにする
-  validates :status_id, numericality: { other_than: 1 } 
-  validates :category_id, numericality: { other_than: 1 } 
-  validates :burden_id, numericality: { other_than: 1 } 
-  validates :shipping_origin_id, numericality: { other_than: 1 } 
-  validates :shipping_day_id, numericality: { other_than: 1 } 
+  validates :status_id, numericality: { other_than: 1, message:"Sales status Select" } 
+  validates :category_id, numericality: { other_than: 1, message:"Category Select" } 
+  validates :burden_id, numericality: { other_than: 1, message:"Shipping fee status Select" } 
+  validates :shipping_day_id, numericality: { other_than: 1, message:"Scheduled delivery Select" } 
+  validates :shipping_origin_id, numericality: { other_than: 1, message:"Prefecture Select" } 
 end
