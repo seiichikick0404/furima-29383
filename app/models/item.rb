@@ -1,12 +1,13 @@
 class Item < ApplicationRecord
   belongs_to :user
+  has_one_attached :image
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :status
   belongs_to_active_hash :category
   belongs_to_active_hash :burden
   belongs_to_active_hash :shipping_origin
   belongs_to_active_hash :shipping_day
-
+  
 
   # バリデーション
   validates :name, presence: true
@@ -18,7 +19,7 @@ class Item < ApplicationRecord
   validates :shipping_origin_id, presence: true
   validates :shipping_day_id, presence: true
   validates :price, presence: true,
-            length: { in: 300..9999999, message: "Price Out of setting range" },
+            inclusion: { in: 300..9999999, message: "Price Out of setting range" },
             format: { with: /\A[0-9]+\z/, message: "Price Half-width number" }
   #一つ目の選択「--」の時は保存できないようにする
   validates :status_id, numericality: { other_than: 1, message:"Sales status Select" } 
