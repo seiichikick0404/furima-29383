@@ -20,7 +20,7 @@ class Item < ApplicationRecord
   validates :shipping_day_id, presence: true
   validates :price, presence: true,
             inclusion: { in: 300..9999999, message: "Price Out of setting range" },
-            format: { with: /\A[0-9]+\z/, message: "Price Half-width number" }
+            numericality: { with: /\A[0-9]+\z/, message: 'Half-width number' }
   #一つ目の選択「--」の時は保存できないようにする
   validates :status_id, numericality: { other_than: 1, message:"Sales status Select" } 
   validates :category_id, numericality: { other_than: 1, message:"Category Select" } 

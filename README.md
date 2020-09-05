@@ -66,6 +66,17 @@ Things you may want to cover:
 - has_one : purchase
 
 
+<!-- ## active_storage_blobs テーブル
+
+| Column     | Type       | Options                        |
+| ------     | ---------- | ------------------------------ |
+| comments   | text       | null: false                    |
+| user       | references | null: false, foreign_key: true |
+| item       | references | null: false, foreign_key: true | -->
+
+
+
+
 ## messages テーブル
 
 | Column     | Type       | Options                        |
