@@ -47,23 +47,34 @@ Things you may want to cover:
 ## items テーブル
 
 | Column           | Type      | Options                        |
-| ------ ----------| ----------| ------------------------------ |
-| name             | string    | null: false                    |
-| category         | integer   | null: false                    |
-| image            | string    | null: false                    |
-| text             | text      | null: false                    |
-| status           | integer   | null: false                    |
-| burden           | integer   | null: false                    |
-| shipping_origin  | integer   | null: false                    |
-| shipping_day     | integer   | null: false                    |
-| price            | integer   | null: false                    |
-| user             | references| null: false, foreign_key: true |
+| ------ ---------- | ----------| ------------------------------ |
+| name              | string    | null: false                    |
+| category_id       | integer   | null: false                    |
+| image             | string    | null: false                    |
+| text              | text      | null: false                    |
+| status_id         | integer   | null: false                    |
+| burden_id         | integer   | null: false                    |
+| shipping_origin_id| integer   | null: false                    |
+| shipping_day_id   | integer   | null: false                    |
+| price             | integer   | null: false                    |
+| user              | references| null: false, foreign_key: true |
 
 ### Association
 
 - has_many :messages
 - belongs_to :user
 - has_one : purchase
+
+
+<!-- ## active_storage_blobs テーブル
+
+| Column     | Type       | Options                        |
+| ------     | ---------- | ------------------------------ |
+| comments   | text       | null: false                    |
+| user       | references | null: false, foreign_key: true |
+| item       | references | null: false, foreign_key: true | -->
+
+
 
 
 ## messages テーブル
