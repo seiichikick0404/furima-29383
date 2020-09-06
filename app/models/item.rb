@@ -10,17 +10,19 @@ class Item < ApplicationRecord
   
 
   # バリデーション
-  validates :name, presence: true
-  validates :category, presence: true
-  validates :image, presence: true
-  validates :text, presence: true
-  validates :status_id, presence: true
-  validates :burden_id, presence: true
-  validates :shipping_origin_id, presence: true
-  validates :shipping_day_id, presence: true
-  validates :price, presence: true,
-            inclusion: { in: 300..9999999, message: "Price Out of setting range" },
-            numericality: { with: /\A[0-9]+\z/, message: 'Half-width number' }
+  with_options presence: true do
+    validates :name
+    validates :category
+    validates :image
+    validates :text
+    validates :status_id
+    validates :burden_id
+    validates :shipping_origin_id
+    validates :shipping_day_id
+    validates :price,
+              inclusion: { in: 300..9999999, message: "Price Out of setting range" },
+              numericality: { with: /\A[0-9]+\z/, message: 'Half-width number' }
+  end
   #一つ目の選択「--」の時は保存できないようにする
   validates :status_id, numericality: { other_than: 1, message:"Sales status Select" } 
   validates :category_id, numericality: { other_than: 1, message:"Category Select" } 

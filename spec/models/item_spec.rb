@@ -30,24 +30,29 @@ RSpec.describe Item do
         expect(@item.errors.full_messages).to include("Text can't be blank")
       end
       it "カテゴリー情報が空だと登録できない" do
-        @item.category = nil
+        @item.category_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Category Category Select")
       end
       it "商品の状態情報が空だと登録できない" do
-        @item.status = nil
+        @item.status_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Status Sales status Select")
       end
       it "発送料負担についての情報が空だと登録できない" do
-        @item.burden = nil
+        @item.burden_id = '1'
         @item.valid?
         expect(@item.errors.full_messages).to include("Burden Shipping fee status Select")
       end
       it "発送元の地域についての情報が空だと登録できない" do
-        @item.shipping_origin = nil
+        @item.shipping_origin_id = "1"
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping origin Prefecture Select")
+      end
+      it "発送までの日数が空だと登録できない" do
+        @item.shipping_day_id = "1"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Shipping day Scheduled delivery Select")
       end
       it "価格が空だと登録できない" do
         @item.price = ""
