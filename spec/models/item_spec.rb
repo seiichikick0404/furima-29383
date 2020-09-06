@@ -64,7 +64,7 @@ RSpec.describe Item do
         @item.valid?
         expect(@item.errors.full_messages).to include("Price Price Out of setting range")
       end
-      it "価格が9999999以上だと登録できない" do
+      it "価格が9999999より大きいと登録できない" do
         @item.price = "99999999"
         @item.valid?
         expect(@item.errors.full_messages).to include("Price Price Out of setting range")
