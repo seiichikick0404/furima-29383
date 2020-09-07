@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
-  before_action :move_to_sign_in, except: [:index,]
+  before_action :move_to_sign_in, except: [:index, :show]
 
   def index
+    @item = Item.all
   end
 
   def new
@@ -15,6 +16,10 @@ class ItemsController < ApplicationController
     else
       render 'items/new'
     end
+  end
+
+  def show
+    @item = Item.find(params[:id])
   end
 
  private
