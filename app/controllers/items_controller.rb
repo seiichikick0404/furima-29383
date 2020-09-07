@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :move_to_sign_in, except: [:index,]
 
   def index
+    @item = Item.all
   end
 
   def new
@@ -16,6 +17,7 @@ class ItemsController < ApplicationController
       render 'items/new'
     end
   end
+
 
  private
   def item_params
