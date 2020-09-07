@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_sign_in, except: [:index, :show]
+  before_action :set_item, only: [:edit, :update, :show]
 
   def index
     @item = Item.all
@@ -18,13 +19,23 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
-    @item = Item.find(params[:id])
+  
+
+  def update
+    if @item.update(item_params)
+      redirect_to item_path
+    else
+      render action: :edit
+    end
   end
 
  private
   def item_params
     params.require(:item).permit(:name, :category_id, :image, :text, :status_id, :burden_id, :shipping_origin_id, :shipping_day_id, :price).merge(user_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 
   def move_to_sign_in
