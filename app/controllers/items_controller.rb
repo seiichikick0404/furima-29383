@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_sign_in, except: [:index,]
+  before_action :move_to_sign_in, except: [:index, :show]
 
   def index
     @item = Item.all
