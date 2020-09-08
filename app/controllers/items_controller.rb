@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_sign_in, except: [:index, :show]
-  before_action :set_item, only: [:edit, :update, :show]
+  before_action :set_item, only: [:edit, :update, :show, :destroy]
 
   def index
     @item = Item.all
@@ -19,7 +19,13 @@ class ItemsController < ApplicationController
     end
   end
 
-  
+  def destroy
+    if @item.destroy
+      redirect_to root_path
+    else
+      render action: :show
+    end
+  end
 
   def update
     if @item.update(item_params)
