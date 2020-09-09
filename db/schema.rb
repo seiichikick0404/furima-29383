@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 2020_09_08_060353) do
     t.string "city", null: false
     t.string "house_num", null: false
     t.string "building", null: false
-    t.integer "phone", null: false
+    t.string "phone", null: false
     t.bigint "purchase_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
