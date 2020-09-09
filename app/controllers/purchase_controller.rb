@@ -1,5 +1,6 @@
 class PurchaseController < ApplicationController
   def index
+    @purchase =PurchaseAddress.new 
   end
 
   def new
