@@ -1,6 +1,8 @@
 class PurchaseController < ApplicationController
   before_action :set_purchase, only: [:index, :new]
   before_action :move_to_sign_in
+  before_action :set_item
+  before_action :move_to_top
   def index
   end
 
@@ -43,4 +45,14 @@ class PurchaseController < ApplicationController
       redirect_to "/users/sign_in"
     end
   end
+  
+  def move_to_top
+    @item = Item.find(params[:item_id])
+    unless @item.purchase == nil
+      redirect_to  controller: :items, action: :index
+    end
+  end
+  def set_item
+    @item = Item.find(params[:item_id])
+  end   
 end
