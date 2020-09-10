@@ -1,10 +1,9 @@
 class PurchaseController < ApplicationController
+  before_action :set_purchase, only: [:index, :new]
   def index
-    @purchase =PurchaseAddress.new 
   end
 
-  def new
-    @purchase =PurchaseAddress.new   
+  def new  
   end
 
   def create
@@ -33,4 +32,10 @@ class PurchaseController < ApplicationController
       currency:'jpy'                 # 通貨の種類(日本円)
     )
   end
+
+  def set_purchase
+    @purchase =PurchaseAddress.new
+  end
+
+  
 end
