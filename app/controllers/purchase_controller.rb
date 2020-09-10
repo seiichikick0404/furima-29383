@@ -1,5 +1,6 @@
 class PurchaseController < ApplicationController
   before_action :set_purchase, only: [:index, :new]
+  before_action :move_to_sign_in
   def index
   end
 
@@ -37,5 +38,9 @@ class PurchaseController < ApplicationController
     @purchase =PurchaseAddress.new
   end
 
-  
+  def move_to_sign_in
+    unless user_signed_in?
+      redirect_to "/users/sign_in"
+    end
+  end
 end
