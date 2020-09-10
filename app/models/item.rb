@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :burden
   belongs_to_active_hash :shipping_origin
   belongs_to_active_hash :shipping_day
+  has_one :purchase
   
 
   # バリデーション
