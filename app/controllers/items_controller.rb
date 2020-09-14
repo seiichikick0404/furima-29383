@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_sign_in, except: [:index, :show]
+  before_action :move_to_sign_in, except: [:index, :show, :serch]
   before_action :set_item, only: [:edit, :update, :show, :destroy]
 
   def index
@@ -33,6 +33,10 @@ class ItemsController < ApplicationController
     else
       render action: :edit
     end
+  end
+
+  def search
+    @item = Item.search(params[:keyword])
   end
 
  private
