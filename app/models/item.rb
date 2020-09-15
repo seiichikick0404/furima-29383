@@ -7,6 +7,7 @@ class Item < ApplicationRecord
     end
   end
   # アソシエーション
+  has_manay :message
   belongs_to :user
   has_one_attached :image
   extend ActiveHash::Associations::ActiveRecordExtensions
