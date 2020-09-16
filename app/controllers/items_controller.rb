@@ -10,6 +10,11 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
+  def show
+    @message = Message.new
+    @messages = @item.messages.includes(:user)
+  end
+
   def create
     @item = Item.new(item_params)
     if @item.save
