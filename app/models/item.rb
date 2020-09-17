@@ -30,13 +30,13 @@ class Item < ApplicationRecord
     validates :shipping_origin_id
     validates :shipping_day_id
     validates :price,
-              inclusion: { in: 300..9999999, message: "Price Out of setting range" },
-              numericality: { with: /\A[0-9]+\z/, message: 'Half-width number' }
+              inclusion: { in: 300..9999999, message: "は範囲内で入力して下さい" },
+              numericality: { with: /\A[0-9]+\z/, message: 'は半角数字で入力して下さい' }
   end
   #一つ目の選択「--」の時は保存できないようにする
-  validates :status_id, numericality: { other_than: 1, message:"Sales status Select" } 
-  validates :category_id, numericality: { other_than: 1, message:"Category Select" } 
-  validates :burden_id, numericality: { other_than: 1, message:"Shipping fee status Select" } 
-  validates :shipping_day_id, numericality: { other_than: 1, message:"Scheduled delivery Select" } 
-  validates :shipping_origin_id, numericality: { other_than: 1, message:"Prefecture Select" } 
+  validates :status_id, numericality: { other_than: 1, message:"を入力して下さい" } 
+  validates :category_id, numericality: { other_than: 1, message:"を入力して下さい" } 
+  validates :burden_id, numericality: { other_than: 1, message:"を入力して下さい" } 
+  validates :shipping_day_id, numericality: { other_than: 1, message:"を入力して下さい" } 
+  validates :shipping_origin_id, numericality: { other_than: 1, message:"を入力して下さい" } 
 end
