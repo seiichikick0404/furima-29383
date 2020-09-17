@@ -183,6 +183,32 @@
   margin: 10px 5px 0 0;
 }
 
+.comments {
+  padding: 5px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.comments a {
+  color: #57C3E9;
+  margin-left: 30px;
+}
+
+.comments H4 {
+  margin-bottom: 15px;
+  margin-left: 30px;
+  text-align: left;
+}
+
+.comments p {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.comments a:hover {
+  text-decoration: underline;
+}
+
 .links {
   display: flex;
   justify-content: space-between;
