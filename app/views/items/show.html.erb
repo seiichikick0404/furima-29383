@@ -84,18 +84,34 @@
   <%# /商品の概要 %>
 
   <div class="comment-box">
-    <form>
-      <textarea class="comment-text"></textarea>
-      <p class="comment-warn">
+    <%= form_with(model: [@item, @message], local: true) do |form| %>
+      <%= form.text_area :comments, class:"comment-text", maxlength:"60" %>
+      <p class="comment-warn"> 
         相手のことを考え丁寧なコメントを心がけましょう。
         <br>
         不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      </p>
+      </p> 
       <button type="submit" class="comment-btn">
-        <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
+        <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%> 
         <span>コメントする<span>
       </button>
-    </form>
+    <% end %>
+    <%# コメント一覧 %>
+  <div class="comments">
+      <h4>＜コメント一覧＞</h4>
+      <% if @messages %>
+        <% @messages.each do |message| %>
+          <p>
+            <strong><%= link_to message.user.nickname, "/users/#{message.user_id}" %>：</strong>
+            <%= message.comments %>
+            <% if user_signed_in? && current_user.id == message.user_id %>
+            <%= link_to '削除', item_message_path(message.item.id, message.id), method: :delete, class:'message-destroy' %>
+            <%# <%= link_to '削除', item_message_path(item_id: @item.id, id: message.id), method: :delete, class:'message-destroy' %> 
+          </p>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
   <div class="links">
     <a href="#" class="change-item-btn">
